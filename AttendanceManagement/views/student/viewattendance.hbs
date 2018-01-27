@@ -1,0 +1,21 @@
+
+<h1 align="center">{{Subject}}</h1>
+<hr>
+
+<table class="table table-striped">
+    <thead>
+    <td>#</td>
+    <td>Date</td>
+    <td>Attendance</td>
+    </thead>
+
+    <tbody>
+    {{# each att }}
+        <tr>
+            <td>{{inc @index}}</td>
+            <td>{{this.Date}}</td>
+            <td><input type="checkbox" {{# if this.Present}} checked {{/if}} disabled></td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

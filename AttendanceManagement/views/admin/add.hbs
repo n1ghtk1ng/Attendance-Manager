@@ -1,0 +1,217 @@
+
+{{# if student}}
+    {{#if hasErrors}}
+        <div class="alert alert-danger">
+            {{#each messages}}
+                <p>{{this}}</p>
+            {{/each}}
+
+        </div>
+    {{/if}}
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#datepicker" ).datepicker({changeMonth: true,
+                changeYear: true,
+                yearRange: '1980:2017',
+                showButtonPanel: true
+            });
+        } );
+    </script>
+
+    <form action="/add/student" method="post">
+        <div class="form-row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="name">Student Name</label>
+                    <input type="text" name="name" id="name" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="name" class="form-control" name="address" required>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="phno">PhoneNumber</label>
+                    <input type="text" id="name" class="form-control" name="phoneNo" required>
+                </div>
+            </div>
+            <div class='col-xs-12'>
+                <div class="form-group">
+                    <label for="DOB">DOB</label>
+                    <input type="text" class="form-control" name="DOB" id="datepicker">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="FatherName">FatherName</label>
+                    <input type="text" id="FatherName" class="form-control" name="fname" required>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="MotherName">MotherName</label>
+                    <input type="text" id="MotherName" class="form-control" name="mname" required>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" class="form-control" name="email" required>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="YearOfAdmission">YearOfAdmission</label>
+                    <input type="text" id="YearOfAdmission" class="form-control" name="YearOfAdmission" required>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="BranchName">BranchName</label>
+                    <input list="Branch" class="form-control" name="BranchName">
+                    <datalist id="Branch">
+                        <option value="CS">
+                        <option value="IT">
+                        <option value="ECE">
+                    </datalist>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="CurrentSemester">CurrentSemester</label>
+                    <input list="Semester" class="form-control" name="CurrentSemester">
+                    <datalist id="Semester">
+                        <option value="I">
+                        <option value="II">
+                        <option value="III">
+                        <option value="IV">
+                        <option value="V">
+                        <option value="VI">
+                        <option value="VII">
+                        <option value="VIII">
+                    </datalist>
+
+                </div>
+            </div>
+        <button type="submit" class="btn btn-info btn-lg active">ADD STUDENT</button>
+
+    </form>
+
+    {{/if}}
+
+{{# if teacher}}
+    {{#if hasErrors}}
+        <div class="alert alert-danger">
+            {{#each messages}}
+                <p>{{this}}</p>
+            {{/each}}
+
+        </div>
+    {{/if}}
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        var i=0;
+        var j=1;
+        $( function() {
+            $( "#datepicker" ).datepicker({changeMonth: true,
+                changeYear: true,
+                yearRange: '1980:2017',
+                showButtonPanel: true
+            });
+            $( "#datepicker2" ).datepicker({changeMonth: true,
+                changeYear: true,
+                yearRange: '1980:2017',
+                showButtonPanel: true
+            });
+            $('#TeachingInfo').click(function () {
+                var x="<hr>Adding Detail No "+j+"<br><label for='Branch'>Branch</label><input list='Branch' class='form-control' name='BranchName'><datalist id='Branch'><option value='CS'> <option value='IT'><option value='ECE'></datalist>";
+                var y="<label for='Semester'>Semester</label><input list='Semester' class='form-control' name='Semester'><datalist id='Semester'><option value='I'> <option value='II'><option value='III'><option value='IV'><option value='V'><option value='VI'><option value='VII'> <option value='VIII'></datalist>";
+                var z="<label for='Subject'>Subject</label><input list='Subject' class='form-control' name='Subject'>";
+                $('#info').append(x+y+z);
+                i++;
+                j++;
+                $('#infoentries').val(i);
+            });
+        } );
+    </script>
+
+    <form action="/add/teacher" method="post">
+        <div class="form-row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="name">Teacher Name</label>
+                    <input type="text" name="name" id="name" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="name" class="form-control" name="address" required>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="phno">PhoneNumber</label>
+                    <input type="text" id="name" class="form-control" name="phoneNo" required>
+                </div>
+            </div>
+            <div class='col-xs-12'>
+                <div class="form-group">
+                    <label for="DOB">DOB</label>
+                    <input type="text" class="form-control" name="DOB" id="datepicker">
+                </div>
+            </div>
+
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label for="FatherName">FatherName</label>
+                <input type="text" id="FatherName" class="form-control" name="fname" required>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label for="MotherName">MotherName</label>
+                <input type="text" id="MotherName" class="form-control" name="mname" required>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="email" class="form-control" name="email" required>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label for="DateOfJoining">DateOfJoining</label>
+                <input type="text" id="datepicker2" class="form-control" name="DateOfJoining" required>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label for="TeachingInfo">TeachingInfo</label>
+                <input  type="button" class="btn btn-info btn-lg" id="TeachingInfo" value="ADD TEACHING INFO">
+                <div id="info">
+
+                </div>
+            </div>
+        </div>
+            <input type="hidden" name="infoentries" id="infoentries" hidden>
+        <button type="submit" class="btn btn-info btn-lg active">ADD TEACHER</button>
+    </div>
+    </form>
+
+{{/if}}

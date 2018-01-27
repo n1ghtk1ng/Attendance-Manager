@@ -1,0 +1,73 @@
+<script
+        src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
+<script>
+    function toggleattendance(el) {
+
+        let present=$(el).prop('checked')?1:0;
+        console.log($('#Date').val());
+        $(el).prop('checked',!present);
+        $.post('/teacher/edit',{studentid:el.id,present:present,branchname:$('#Branch').val(),semester:$('#Semester').val(),subject:$('#Subject').val(),date:$('#Date').val()},
+                function (data) {
+                    if(data && data.done){
+                        $(el).prop('checked',present);
+                    }
+                });
+        }
+
+</script>
+<form action="/teacher/saveattendance" method="post">
+    <div class="form-row">
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label for='BranchName'>BranchName</label>
+                <input type="text" value="{{Branch}}" disabled class="form-control" id="Branch">
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label for='Semester'>Semester</label>
+                <input type="text" value="{{Semester}}" disabled class="form-control" id="Semester">
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label for='Subject'>Subject</label>
+                <input type="text" value="{{Subject}}" disabled class="form-control" id="Subject">
+            </div>
+        </div>
+        <div class="col-xs-12">
+                <label for="date">Date</label>
+            <div class="form-group">
+                <input type="text" value="{{Date}}" disabled class="form-control" id="Date">
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <label for='attendance'>Attendance</label>
+            <table class="table table-striped">
+                <thead>
+                    <td>#</td>
+                    <td>Name</td>
+                    <td>Attendance</td>
+                </thead>
+
+                <tbody>
+                {{# each students }}
+                <tr>
+                    <td>{{inc @index}}</td>
+                    <td>{{this.Name}}</td>
+                    <td><input type="checkbox"  id="{{this.Id}}" {{# if this.Present}} checked {{/if}}  onclick="toggleattendance(this)"></td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <button type="submit" class="btn btn-info btn-lg active">Submit</button>
+    </div>
+
+
+</form>
+
+

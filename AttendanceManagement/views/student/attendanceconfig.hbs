@@ -1,0 +1,22 @@
+
+{{# if err1}}
+    <div id="success" class="alert alert-danger">
+        {{err1}}
+    </div>
+{{/if}}
+
+<form action="/student/viewattendance" method="post">
+    <div class="form-row">
+<div class="col-xs-12">
+    <div class="form-group">
+        <label for='Subject'>Subject</label>
+        <input list='Subject' class='form-control' name='Subject'>
+        <datalist id="Subject">
+            <option value="ENGLISH">
+            <option value="MATHEMATICS">
+        </datalist>
+    </div>
+</div>
+        <button type="submit" class="btn btn-info btn-lg active">VIEW ATTENDANCE</button>
+    </div>
+</form>

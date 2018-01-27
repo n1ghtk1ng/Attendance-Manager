@@ -1,0 +1,71 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $( function() {
+        $( "#datepicker" ).datepicker({changeMonth: true,
+            changeYear: true,
+            yearRange: '1980:2017',
+            showButtonPanel: true
+        });
+    } );
+</script>
+<h1 align="center">Attendance Section</h1>
+<hr>
+{{# if haserror}}
+    <div class="alert alert-danger">
+        {{err}}
+    </div>
+{{/if}}
+<form action="/teacher/takeattendance" method="post">
+    <div class="form-row">
+
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label for='Branch'>Branch</label>
+                <input list="Branch" class="form-control" name="BranchName">
+                <datalist id='Branch'>
+                    <option value='CS'>
+                    <option value='IT'>
+                    <option value='ECE'>
+                </datalist>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label for="Semester">Semester</label>
+                <input list="Semester" class="form-control" name="Semester">
+                <datalist id='Semester'>
+                    <option value='I'>
+                    <option value='II'>
+                    <option value='III'>
+                    <option value='IV'>
+                    <option value='V'>
+                    <option value='VI'>
+                    <option value='VII'>
+                    <option value='VIII'>
+                </datalist>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label for='Subject'>Subject</label>
+                <input list='Subject' class='form-control' name='Subject'>
+                <datalist id="Subject">
+                    <option value="ENGLISH">
+                    <option value="MATHEMATICS">
+                </datalist>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label for='datepicker'>Date</label>
+                <input class='form-control' name='Date' id="datepicker">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-info btn-lg active">TAKE ATTENDANCE</button>
+        <!--//only taking the attendance not modifying it..-->
+    </div>
+</form>
+

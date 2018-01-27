@@ -1,0 +1,41 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+
+            <a class="navbar-brand" href="/">AttendanceTracker</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <ul class="nav navbar-nav navbar-right">
+                {{# if login }}
+                <li><a href="/">Home</a></li>
+                {{else}}
+                <li><a href="/">Features</a></li>
+                {{/if}}
+
+                <li class="dropdown">
+
+                        {{# if login }}
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Account<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                            <li><a href="/user/profile">Profile</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/user/logout">Logout</a></li>
+                            </ul>
+                        {{else}}
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signup/Signin<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                            <li><a href="/user/signup">SignUp</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/user/signin">SignIn</a></li>
+                            </ul>
+                        {{/if}}
+
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
